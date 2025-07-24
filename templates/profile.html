@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/profile.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-header">
+      <h1 class="profile-title">Профиль</h1>
+    </div>
+    
+    <div class="profile-avatar">
+      {{if .Avatar}}<img src="{{.Avatar}}" class="avatar-img">{{end}}
+    </div>
+    
+    <div class="profile-info">
+      <div class="info-item">
+        <span class="info-label">Имя пользователя:</span>
+        <span class="info-value">{{.Username}}</span>
+      </div>
+    </div>
+    
+    <form method="POST" enctype="multipart/form-data" class="profile-form">
+      <div class="form-group">
+        <label class="form-label">Новое имя пользователя:</label>
+        <input name="username" class="form-input">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Аватар:</label>
+        <div class="file-input-wrapper">
+          <input type="file" name="avatar" class="form-input">
+        </div>
+      </div>
+      
+      <button type="submit" class="form-button">Обновить профиль</button>
+    </form>
+    
+    <div class="profile-nav">
+      <a href="/chat" class="nav-link">Вернуться к чату</a>
+      <a href="/login" class="nav-link">Выход</a>
+    </div>
+  </div>
+</body>
+</html>

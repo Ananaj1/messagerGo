@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/static/chat.css">
+</head>
+<body>
+  <header class="chat-header">
+    <div class="header-links">
+      <a href="/profile">Профиль</a>
+      <a href="/test">Пройти тест</a>
+    </div>
+    <h1 class="chat-title">Добро пожаловать, {{.Username}}</h1>
+  </header>
+  
+  <div class="chat-container">
+    <div id="messages" class="messages-container"></div>
+    <form method="post" class="chat-form">
+      <textarea name="message" class="chat-input" placeholder="Type your message here..."></textarea>
+      <button type="submit" class="chat-button">Send</button>
+    </form>
+  </div>
+  <script>
+function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(text));
+    return div.innerHTML;
+}
+
+let lastIds = [];
+
+function renderMessages(messages) {
+    const messagesDiv = document.getElementById('messages');
+    const ids = messages.map(msg => msg.username + '|' + msg.content + '|' + (msg.avatar || ''));
+    if (JSON.stringify(ids) === JSON.stringify(lastIds)) return;
+    lastIds = ids;
+
+    messagesDiv.innerHTML = '';
+    messages.slice().reverse().forEach(msg => {
+        const div = document.createElement('div');
+        div.className = 'message';
+        div.innerHTML = `
+            <img class="avatar" src="${escapeHtml(msg.avatar)}" alt="avatar" style="width:40px;height:40px;border-radius:50%;vertical-align:middle;margin-right:10px;">
+            <span class="message-username">${escapeHtml(msg.username)}</span>
+            <span class="message-content">${escapeHtml(msg.content)}</span>
+        `;
+        messagesDiv.appendChild(div);
+    });
+
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function loadMessages() {
+    fetch('/messages')
+        .then(response => response.json())
+        .then(renderMessages);
+}
+
+setInterval(loadMessages, 2000);
+window.onload = loadMessages;
+</script>
+</body>
+</html>

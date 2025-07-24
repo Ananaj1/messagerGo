@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест знаний</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/test.css">
+  
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1 class="test-title">Тест по веб-разработке</h1>
+            <div class="test-info">
+                <div class="info-card">
+                    <div class="info-label">Вопрос</div>
+                    <div class="info-value"><span id="current-question">1</span>/<span id="total-questions">10</span></div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Осталось времени</div>
+                    <div class="info-value" id="timer">10:00</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Правильных ответов</div>
+                    <div class="info-value"><span id="correct-count">0</span>/<span id="total-questions2">10</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="progress-text">
+                <span>Начало теста</span>
+                <span>Завершение</span>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <div class="question-number">Вопрос <span id="q-number">1</span></div>
+            <div class="question-text" id="question-text">Какой язык используется для стилизации веб-страниц?</div>
+            
+            <div class="options-container" id="options-container">
+                <!-- Варианты ответов будут добавлены через JS -->
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" id="prev-btn" disabled>
+                <i class="fas fa-arrow-left"></i> Предыдущий
+            </button>
+            <button class="btn btn-primary" id="next-btn">
+                Следующий <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-finish" id="finish-btn">
+                <i class="fas fa-check-circle"></i> Завершить тест
+            </button>
+        </div>
+        
+        <div class="results-container" id="results-container">
+            <h2 class="results-title">Результаты теста</h2>
+            <div class="score" id="final-score">0%</div>
+            <div class="score-text" id="score-text">Вы можете лучше!</div>
+            <p id="result-details">Вы ответили правильно на 0 из 0 вопросов</p>
+            <button class="restart-btn" id="restart-btn">
+                <i class="fas fa-redo"></i> Пройти тест снова
+            </button>
+        </div>
+    </div>
+    
+ <script src="/static/test.js"></script>
+      
+  
+</body>
+</html>

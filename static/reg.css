@@ -1,0 +1,210 @@
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-card: #252525;
+  --accent-primary: #bb86fc;
+  --accent-secondary: #03dac6;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border: #333333;
+  --input-height: 52px;
+}
+
+body {
+  font-family: 'Segoe UI', 'SF Pro Display', -apple-system, sans-serif;
+  background: radial-gradient(circle at top right, #1a1a2e, #121212 60%);
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Контейнер */
+.container {
+  width: 100%;
+  max-width: 560px;
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+}
+
+/* Заголовок */
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--accent-primary);
+  border-radius: 3px;
+}
+
+/* Поля формы */
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  height: var(--input-height);
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 16px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: var(--accent-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(187, 134, 252, 0.2);
+  background: #2a2a2a;
+}
+
+/* Текстовая область */
+textarea.form-input {
+  height: auto;
+  min-height: 120px;
+  padding: 16px;
+  resize: vertical;
+}
+
+/* Файловый инпут */
+.file-input-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.file-input-wrapper::after {
+  content: 'Выберите файл';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 0 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+input[type="file"].form-input {
+  padding: 0 120px 0 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+input[type="file"].form-input::file-selector-button {
+  visibility: hidden;
+  width: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Кнопка */
+button {
+  background: linear-gradient(135deg, var(--accent-primary), #6200ea);
+  color: white;
+  height: var(--input-height);
+  padding: 0 28px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(187, 134, 252, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Медиазапросы */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 25px;
+  }
+
+  .form-input,
+  button {
+    height: 50px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .form-input,
+  button {
+    height: 46px;
+    font-size: 14px;
+  }
+
+  .file-input-wrapper::after {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  textarea.form-input {
+    min-height: 100px;
+  }
+}
